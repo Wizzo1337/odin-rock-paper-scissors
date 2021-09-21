@@ -1,0 +1,1 @@
+simple rock paper scissors using javascript - to be played in the console

@@ -10,29 +10,47 @@ function computerPlay () {
 };
 
 
-function playRound (playerSelection, computerSelection) {
+function playSingleRound (playerSelection, computerSelection) {
     let playerSelect = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
     if (playerSelect === "Rock" && computerSelection === "Paper") {
-        return `You Lose! ${computerSelection} beats ${playerSelect}`
+        return `You Lose!`
     } else if (playerSelect === "Rock" && computerSelection === "Scissors") {
-        return `You Win! ${playerSelect} beats ${computerSelection}`
+        return `You Win!`
     } else if (playerSelect === "Paper" && computerSelection === "Scissors") {
-        return `You Lose! ${computerSelection} beats ${playerSelect}`
+        return `You Lose!`
     } else if (playerSelect === "Paper" && computerSelection === "Rock") {
-        return `You Win! ${playerSelect} beats ${computerSelection}`
+        return `You Win!`
     } else if (playerSelect === "Scissors" && computerSelection === "Paper") {
-        return `You win! ${playerSelect} beats ${computerSelection}`
+        return `You Win!`
     } else if (playerSelect === "Scissors" && computerSelection === "Rock") {
-        return `You Lose! ${computerSelection} beats ${playerSelect}`
+        return `You Lose!`
     } else {
         return `It's a tie!`
     }
 }
 
-const playerSelection = "rock";
+const playerSelection = "rock"; //prompt("Rock, Paper, or Scissors?", "Choose your weapon!")//;
 const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+// console.log(playSingleRound(playerSelection, computerSelection));
+
+
 
 function game () {
-    playRound ()
+    var playerScore = 0;
+    var computerScore = 0;
+    playSingleRound(playerSelection, computerPlay());
+    
+    for (var i = 1; i <= 5; i++) {
+        if (playSingleRound(playerSelection, computerPlay()) === 'You Win!') {
+            playerScore++
+        } else if (playSingleRound(playerSelection, computerPlay()) === 'You Lose!') {
+            computerScore++
+        }
+        console.log(playSingleRound(playerSelection, computerPlay()));
+        console.log('computer selection value: ', computerPlay());
+    }
+    
+    console.log('playerScore: ' + playerScore, 'computerScore: ' + computerScore);
 }
+
+console.log(game());
